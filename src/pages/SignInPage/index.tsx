@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { emailPolicy, passwordPolicy } from 'utils/validation';
 
 const SignInPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
   const { isValidated: isEmailValidated, errorMessage: emailError } = emailPolicy(email);
   const { isValidated: isPasswordValidated, errorMessage: passwordError } =
     passwordPolicy(password);
