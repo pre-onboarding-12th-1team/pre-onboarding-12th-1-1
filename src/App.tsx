@@ -15,7 +15,7 @@ import PublicRoute from 'routes/PublicRoute';
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Routes>
+      <Route>
         <Route element={<HomePage />} path="/" />
         <Route element={<PublicRoute />}>
           <Route element={<SignInPage />} path="signin" />
@@ -24,7 +24,7 @@ const App = () => {
         <Route element={<ProtectedRoute />}>
           <Route element={<TodoListPage />} path="todo" />
         </Route>
-      </Routes>,
+      </Route>,
     ),
   );
   return <RouterProvider router={router} />;
