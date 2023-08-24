@@ -7,7 +7,6 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
-  Routes,
 } from 'react-router-dom';
 import ProtectedRoute from 'routes/ProtectedRoute';
 import PublicRoute from 'routes/PublicRoute';
