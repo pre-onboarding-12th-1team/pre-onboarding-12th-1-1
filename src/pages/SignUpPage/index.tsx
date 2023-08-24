@@ -13,17 +13,23 @@ const SignUpPage = () => {
       >
         <input
           className="shadow-md outline-none rounded-md w-full h-10 p-3"
+          data-testid="email-input"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.currentTarget.value)}
         />
         <input
           className="shadow-md outline-none rounded-md w-full h-10 p-3"
+          data-testid="password-input"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.currentTarget.value)}
         />
-        <button className="w-full h-10 bg-black  text-white rounded-md" type="submit">
+        <button
+          className="w-full h-10 bg-black  text-white rounded-md"
+          data-testid="signup-button"
+          type="submit"
+        >
           회원가입
         </button>
       </form>
