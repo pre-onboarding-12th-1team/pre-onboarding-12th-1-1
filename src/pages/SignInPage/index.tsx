@@ -1,3 +1,4 @@
+import AuthButton from 'components/common/AuthButton';
 import InputWithErrorMessage from 'components/common/InputWithErrorMessage';
 import { useState } from 'react';
 import { emailPolicy, passwordPolicy } from 'utils/validation';
@@ -33,14 +34,12 @@ const SignInPage = () => {
           value={password}
           onChange={(e) => setPassword(e.currentTarget.value)}
         />
-        <button
-          className="w-full h-10 bg-black  text-white rounded-md"
+        <AuthButton
           data-testid="signin-button"
           disabled={!isEmailValidated || !isPasswordValidated}
-          type="submit"
         >
           로그인
-        </button>
+        </AuthButton>
       </form>
     </main>
   );
