@@ -1,9 +1,7 @@
 import { ComponentProps } from 'react';
 
-interface Props extends ComponentProps<'button'> {
-  className?: string;
-  disabled?: boolean;
-}
+type Props = ComponentProps<'button'>;
+
 const AuthButton = ({ className, disabled, ...rest }: Props) => (
   <button
     className={`${className} ${

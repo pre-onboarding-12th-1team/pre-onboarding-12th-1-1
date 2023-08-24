@@ -7,18 +7,18 @@ import { setToken } from 'utils/localStorage';
 import { emailPolicy, passwordPolicy } from 'utils/validation';
 
 const SignInPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
   const { isValidated: isEmailValidated, errorMessage: emailError } = emailPolicy(email);
   const { isValidated: isPasswordValidated, errorMessage: passwordError } =
     passwordPolicy(password);
-  const navigate = useNavigate();
 
   const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
     if (!email || !password) return;
 
-    await Auth.signin(email, password).then((response) => {
+    Auth.signin(email, password).then((response) => {
       if (response && response.status === 200) {
         setToken(response.data.access_token);
         navigate('/todo');

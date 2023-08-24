@@ -1,11 +1,10 @@
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
 
 interface Props extends ComponentProps<'input'> {
-  value?: string;
-  className?: string;
   isValidated: boolean;
   errorMessage: string;
 }
+
 const InputWithErrorMessage = ({
   value,
   className,

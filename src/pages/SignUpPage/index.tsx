@@ -6,18 +6,18 @@ import { useNavigate } from 'react-router-dom';
 import { emailPolicy, passwordPolicy } from 'utils/validation';
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { isValidated: isEmailValidated, errorMessage: emailError } = emailPolicy(email);
   const { isValidated: isPasswordValidated, errorMessage: passwordError } =
     passwordPolicy(password);
-  const navigate = useNavigate();
 
   const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
     if (!email || !password) return;
 
-    await Auth.signup(email, password).then((response) => {
+    Auth.signup(email, password).then((response) => {
       if (response && response.status === 201) {
         navigate('/signin');
       }
