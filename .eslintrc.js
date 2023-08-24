@@ -22,7 +22,14 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
   ],
-  plugins: ['react-refresh', 'react', 'import', 'simple-import-sort', 'prettier'],
+  plugins: [
+    'react-refresh',
+    'react',
+    'import',
+    'simple-import-sort',
+    'unused-imports',
+    'prettier',
+  ],
   rules: {
     semi: [2, 'always'],
     'prefer-const': ['warn'],
@@ -66,6 +73,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
+    'unused-imports/no-unused-imports': 'error',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
