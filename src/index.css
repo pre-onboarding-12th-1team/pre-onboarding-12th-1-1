@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#root {
+  @apply w-full max-w-screen-xl;
+}
+
+body {
+  @apply bg-slate-50;
+  @apply flex flex-col items-center;
+}
