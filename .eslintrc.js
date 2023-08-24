@@ -22,16 +22,15 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
   ],
-  plugins: ['react-refresh', 'import', 'simple-import-sort', 'prettier'],
+  plugins: ['react-refresh', 'react', 'import', 'simple-import-sort', 'prettier'],
   rules: {
+    semi: [2, 'always'],
     'prefer-const': ['warn'],
     'prefer-destructuring': ['error', { object: true, array: false }],
     'no-use-before-define': 'off',
     'no-unused-expressions': ['warn'],
     'no-shadow': 'off',
-    'arrow-body-style': 'off',
-    semi: ['warn', 'never'],
-    'prettier/prettier': ['error', { semi: false }, { usePrettierrc: true }],
+    'arrow-body-style': 2,
     'react/react-in-jsx-scope': 'off',
     'react/function-component-definition': [
       'warn',
@@ -79,6 +78,12 @@ module.exports = {
       2,
       {
         labelAttributes: ['htmlFor'],
+      },
+    ],
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
       },
     ],
   },
