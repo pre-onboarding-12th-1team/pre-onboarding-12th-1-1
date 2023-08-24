@@ -1,9 +1,33 @@
-import './App.css'
+import HomePage from 'pages/HomePage';
+import SignInPage from 'pages/SignInPage';
+import SignUpPage from 'pages/SignUpPage';
+import TodoListPage from 'pages/TodoListPage';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+  Routes,
+} from 'react-router-dom';
+import ProtectedRoute from 'routes/ProtectedRoute';
+import PublicRoute from 'routes/PublicRoute';
 
 const App = () => {
-  return (
-    <div className="bg-gray-50 p-8 mx-2 rounded-2xl text-center text-lg sm:text-xl" />
-  )
-}
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Routes>
+        <Route element={<HomePage />} path="/" />
+        <Route element={<PublicRoute />}>
+          <Route element={<SignInPage />} path="signin" />
+          <Route element={<SignUpPage />} path="signup" />
+        </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route element={<TodoListPage />} path="todo" />
+        </Route>
+      </Routes>,
+    ),
+  );
+  return <RouterProvider router={router} />;
+};
 
-export default App
+export default App;
