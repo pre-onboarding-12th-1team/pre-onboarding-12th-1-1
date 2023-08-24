@@ -17,3 +17,10 @@ instance.interceptors.request.use(
     console.error(error);
   },
 );
+
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error(error);
+  },
+);
