@@ -2,6 +2,8 @@
 
 [원티드 프리온보딩 인턴십 8월](https://www.wanted.co.kr/events/pre_ob_fe_12) 사전과제의 Best Practice 선정
 
+[배포링크](http://pre-onboarding-12th-1-1.s3-website.ap-northeast-2.amazonaws.com/)
+
 ## 목차
 1. [팀원 소개](#팀원-소개)
 2. [실행 방법](#실행방법)
@@ -55,9 +57,9 @@ npm install && npm start
 - 깃 브랜치 전략
 > git-flow 전략과 github-flow 전략을 조합하였습니다.
 
-|    main     |  develop   | feat/{기능이름} | hotfixes |
-| :---------: | :--------: | :-------------: | :---: | :---: |
-| 메인 브랜치 | 개발브랜치 |   기능 브랜치   | 버그 수정 |
+| main | develop | feat/{기능이름} | hotfixes |
+| :---: | :---: | :---: | :---: |
+| 메인 브랜치 | 개발브랜치 | 기능 브랜치   | 버그 수정 |
 
 ## 폴더 구조
 
