@@ -1,3 +1,4 @@
+import Layout from 'components/common/Layout';
 import HomePage from 'pages/HomePage';
 import SignInPage from 'pages/SignInPage';
 import SignUpPage from 'pages/SignUpPage';
@@ -14,8 +15,8 @@ import PublicRoute from 'routes/PublicRoute';
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route>
-        <Route element={<HomePage />} path="/" />
+      <Route element={<Layout />} path="/">
+        <Route index element={<HomePage />} />
         <Route element={<PublicRoute />}>
           <Route element={<SignInPage />} path="signin" />
           <Route element={<SignUpPage />} path="signup" />
