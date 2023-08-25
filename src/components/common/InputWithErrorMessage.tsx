@@ -1,17 +1,17 @@
-import { ComponentProps } from 'react';
+import { ComponentProps, FC } from 'react';
 
 interface Props extends ComponentProps<'input'> {
   isValidated: boolean;
   errorMessage: string;
 }
 
-const InputWithErrorMessage = ({
+const InputWithErrorMessage: FC<Props> = ({
   value,
   className,
   isValidated,
   errorMessage,
   ...rest
-}: Props) => (
+}) => (
   <>
     <input
       {...rest}

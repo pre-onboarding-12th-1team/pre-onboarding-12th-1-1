@@ -10,7 +10,7 @@ const TodoItem: FC<Todo> = ({ id, isCompleted = false, todo }) => {
   const [inputValue, setInputValue] = useState(todo);
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const handleCheck: ChangeEventHandler<HTMLInputElement> = async () => {
+  const handleCheck: ChangeEventHandler<HTMLInputElement> = () => {
     todoApi.updateTodo(id, todo, !isChecked).then(() => setIsChecked((prev) => !prev));
   };
 
@@ -18,7 +18,7 @@ const TodoItem: FC<Todo> = ({ id, isCompleted = false, todo }) => {
     setInputValue(e.currentTarget.value);
   };
 
-  const handleSubmit: MouseEventHandler<HTMLButtonElement> = async () => {
+  const handleSubmit: MouseEventHandler<HTMLButtonElement> = () => {
     todoApi.updateTodo(id, inputValue, isChecked).then(() => {
       setIsEditMode(false);
     });
@@ -29,7 +29,7 @@ const TodoItem: FC<Todo> = ({ id, isCompleted = false, todo }) => {
     setInputValue(todo);
   };
 
-  const handleDelete: MouseEventHandler = async () => {
+  const handleDelete: MouseEventHandler = () => {
     todoApi
       .deleteTodo(id)
       .then(() => setTodos((prev) => prev?.filter((todo) => todo.id !== id)));

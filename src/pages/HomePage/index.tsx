@@ -1,5 +1,4 @@
 import BlackButton from 'components/common/BlackButton';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => (
