@@ -8,7 +8,7 @@ const TodoItem: FC<Todo> = ({ id, isCompleted = false, todo }) => {
   const { setTodos } = useContext(TodosContext);
   const [isChecked, setIsChecked] = useState(isCompleted);
   const [inputValue, setInputValue] = useState(todo);
-  const [editMode, setEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
 
   const handleCheck: ChangeEventHandler<HTMLInputElement> = async () => {
     todoApi.updateTodo(id, todo, !isChecked).then(() => setIsChecked((prev) => !prev));
@@ -20,7 +20,7 @@ const TodoItem: FC<Todo> = ({ id, isCompleted = false, todo }) => {
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = async () => {
     todoApi.updateTodo(id, inputValue, isChecked).then(() => {
-      setEditMode(false);
+      setIsEditMode(false);
     });
   };
 
@@ -35,29 +35,26 @@ const TodoItem: FC<Todo> = ({ id, isCompleted = false, todo }) => {
       .then(() => setTodos((prev) => prev?.filter((todo) => todo.id !== id)));
   };
 
-  const handleEditModeOn = () => {
-    setEditMode(true);
-  };
+  const handleEditModeOn = () => setIsEditMode(true);
 
-  const handleEditModeOff = () => setEditMode(false);
+  const handleEditModeOff = () => setIsEditMode(false);
 
-  return (
-    <li className="px-4 py-1 w-700 h-13 bg-gray-100 shadow-md rounded-md flex justify-between items-center">
-      <label>
-        <input checked={isChecked} type="checkbox" onChange={handleCheck} />
-        {editMode ? (
-          <input
-            className="ml-2 w-400 px-1 rounded-md"
-            data-testid="modify-input"
-            type="text"
-            value={inputValue}
-            onChange={handleChangeText}
-          />
-        ) : (
-          <span className="ml-2">{inputValue}</span>
-        )}
-      </label>
-      {editMode ? (
+  let field;
+  let buttonContainer;
+
+  switch (isEditMode) {
+    case true:
+      field = (
+        <input
+          className="ml-2 w-400 px-1 rounded-md"
+          data-testid="modify-input"
+          type="text"
+          value={inputValue}
+          onChange={handleChangeText}
+        />
+      );
+
+      buttonContainer = (
         <div className="flex  gap-1">
           <button
             className="bg-black h-10 w-16 p-1 rounded-lg ml-1 text-white"
@@ -74,7 +71,13 @@ const TodoItem: FC<Todo> = ({ id, isCompleted = false, todo }) => {
             취소
           </button>
         </div>
-      ) : (
+      );
+      break;
+
+    case false:
+      field = <span className="ml-2">{inputValue}</span>;
+
+      buttonContainer = (
         <div className="flex  gap-1">
           <button
             className="bg-black h-10 w-16 p-1 rounded-lg ml-1 text-white"
@@ -91,7 +94,16 @@ const TodoItem: FC<Todo> = ({ id, isCompleted = false, todo }) => {
             삭제
           </button>
         </div>
-      )}
+      );
+  }
+
+  return (
+    <li className="px-4 py-1 w-700 h-13 bg-gray-100 shadow-md rounded-md flex justify-between items-center">
+      <label>
+        <input checked={isChecked} type="checkbox" onChange={handleCheck} />
+        {field}
+      </label>
+      {buttonContainer}
     </li>
   );
 };

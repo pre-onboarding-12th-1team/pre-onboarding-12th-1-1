@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { Todos } from 'types/Todo';
 
 const TodoListPage = () => {
-  const [todos, setTodos] = useState<Todos>();
+  const [todos, setTodos] = useState<Todos>([]);
 
   const getTodos = useCallback(async () => {
     const { data } = await todo.getTodos();
