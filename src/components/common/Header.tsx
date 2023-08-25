@@ -1,19 +1,20 @@
 import BlackButton from 'components/common/BlackButton';
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { deleteToken, getToken } from 'utils/localStorage';
 
 const Header = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsSignedIn(!!getToken());
   }, [location]);
 
   const handleLogOut = () => {
-    setIsSignedIn(false);
     deleteToken();
+    navigate('/');
   };
 
   return (
@@ -31,7 +32,7 @@ const Header = () => {
       </div>
       <p />
 
-      {isSignedIn && isSignedIn ? (
+      {isSignedIn ? (
         <BlackButton onClick={handleLogOut}>Log Out</BlackButton>
       ) : (
         <div className="flex gap-3">
