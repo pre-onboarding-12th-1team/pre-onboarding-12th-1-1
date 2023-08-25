@@ -1,4 +1,3 @@
-# 원티드 프리온보딩 1주차 과제 
 
 [원티드 프리온보딩 인턴십 8월](https://www.wanted.co.kr/events/pre_ob_fe_12) 사전과제의 Best Practice 선정
 
@@ -16,8 +15,6 @@
 | 팀1 | [🐸김보현](https://github.com/BHyeonKim) | [🐶방충림](https://github.com/HWAHAEBANG) | [🐹김수진](https://github.com/notusing11) | [🐨이지은](https://github.com/jieeeun2) |
 | --- | --- | --- | --- | --- |
 | 개인과제 | [김보현의 개인과제](https://github.com/pre-onboarding-12th-1team/bohyeon) | [방춤림의 개인과제](https://github.com/pre-onboarding-12th-1team/choonglim) | [김수진의 개인과제](https://github.com/pre-onboarding-12th-1team/sujin) | [이지은의 개인과제](https://github.com/pre-onboarding-12th-1team/jieun) |
-
-## 실행방법
 
 ```
 npm install && npm start
