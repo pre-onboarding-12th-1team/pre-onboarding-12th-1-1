@@ -5,6 +5,8 @@ export interface Todo {
   userId: number;
 }
 
+export type Todos = Todo[];
+
 export type TodoResponse = Todo;
 
 export type TodosReponse = Todo[];
