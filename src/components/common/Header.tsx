@@ -1,11 +1,16 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import BlackButton from 'components/common/BlackButton';
+import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { deleteToken, getToken } from 'utils/localStorage';
 
-import BalckButton from './BalckButton';
-
 const Header = () => {
-  const [isSignedIn, setIsSignedIn] = useState(!!getToken());
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsSignedIn(!!getToken());
+  }, [location]);
+
   const handleLogOut = () => {
     setIsSignedIn(false);
     deleteToken();
@@ -27,14 +32,14 @@ const Header = () => {
       <p />
 
       {isSignedIn && isSignedIn ? (
-        <BalckButton text="Log Out" onClickEvent={handleLogOut} />
+        <BlackButton onClick={handleLogOut}>Log Out</BlackButton>
       ) : (
         <div className="flex gap-3">
           <Link to="/signin">
-            <BalckButton text="Sign In" />
+            <BlackButton>Sign In</BlackButton>
           </Link>
           <Link to="/signup">
-            <BalckButton text="Sign Up" />
+            <BlackButton>Sign Up</BlackButton>
           </Link>
         </div>
       )}

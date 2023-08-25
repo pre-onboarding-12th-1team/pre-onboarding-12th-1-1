@@ -1,8 +1,8 @@
-import BalckButton from 'components/common/BalckButton';
+import BlackButton from 'components/common/BlackButton';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HomePage: React.FC = () => (
+const HomePage = () => (
   <div className="flex justify-center w-full h-screen">
     <div className="w-1/2 h-auto flex flex-col justify-center items-center ">
       <div className="flex flex-col gap-10">
@@ -13,13 +13,10 @@ const HomePage: React.FC = () => (
           To-Do List로 더 생산적인 하루를 시작해보세요.
         </p>
         <Link to="/todo">
-          <BalckButton text="To-Do List 바로가기" />
+          <BlackButton>To-Do List 바로가기</BlackButton>
         </Link>
       </div>
     </div>
-    {/* <div className="w-1/2 h-auto  flex flex-col justify-center items-center">
-      <img alt="메인이미지" src="/Images/homePageImage.png" />
-    </div> */}
   </div>
 );
 
