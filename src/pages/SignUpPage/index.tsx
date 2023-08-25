@@ -40,7 +40,6 @@ const SignUpPage = () => {
           errorMessage={emailError}
           isValidated={isEmailValidated}
           placeholder="이메일"
-          type="email"
           value={email}
           onChange={(e) => setEmail(e.currentTarget.value)}
         />
