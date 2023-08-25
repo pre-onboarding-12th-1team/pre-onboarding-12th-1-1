@@ -10,3 +10,7 @@ body {
   @apply bg-slate-50;
   @apply flex flex-col items-center;
 }
+
+.active {
+  font-weight: 700;
+}
