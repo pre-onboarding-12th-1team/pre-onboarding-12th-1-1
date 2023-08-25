@@ -1,5 +1,6 @@
 import Layout from 'components/common/Layout';
 import HomePage from 'pages/HomePage';
+import NotFoundPage from 'pages/NotFoundPage';
 import SignInPage from 'pages/SignInPage';
 import SignUpPage from 'pages/SignUpPage';
 import TodoListPage from 'pages/TodoListPage';
@@ -24,6 +25,7 @@ const App = () => {
         <Route element={<ProtectedRoute />}>
           <Route element={<TodoListPage />} path="todo" />
         </Route>
+        <Route element={<NotFoundPage />} path="*" />
       </Route>,
     ),
   );
