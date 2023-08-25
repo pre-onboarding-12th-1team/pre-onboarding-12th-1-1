@@ -10,20 +10,25 @@ const SignInPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
+  const [error, setError] = useState('');
   const { isValidated: isEmailValidated, errorMessage: emailError } = emailPolicy(email);
   const { isValidated: isPasswordValidated, errorMessage: passwordError } =
     passwordPolicy(password);
 
-  const handleSubmit: FormEventHandler = async (e) => {
+  const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
     if (!email || !password) return;
 
-    Auth.signin(email, password).then((response) => {
-      if (response && response.status === 200) {
-        setToken(response.data.access_token);
-        navigate('/todo');
-      }
-    });
+    Auth.signin(email, password)
+      .then((response) => {
+        if (response && response.status === 200) {
+          setToken(response.data.access_token);
+          navigate('/todo');
+        }
+      })
+      .catch(() => {
+        setError('이메일 혹은 비밀번호가 잘못됐습니다.');
+      });
   };
 
   return (
@@ -36,6 +41,7 @@ const SignInPage = () => {
           data-testid="email-input"
           errorMessage={emailError}
           isValidated={isEmailValidated}
+          placeholder="이메일"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.currentTarget.value)}
@@ -44,6 +50,7 @@ const SignInPage = () => {
           data-testid="password-input"
           errorMessage={passwordError}
           isValidated={isPasswordValidated}
+          placeholder="비밀번호"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.currentTarget.value)}
@@ -54,6 +61,7 @@ const SignInPage = () => {
         >
           로그인
         </AuthButton>
+        {error}
       </form>
     </main>
   );

@@ -9,19 +9,24 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const { isValidated: isEmailValidated, errorMessage: emailError } = emailPolicy(email);
   const { isValidated: isPasswordValidated, errorMessage: passwordError } =
     passwordPolicy(password);
 
-  const handleSubmit: FormEventHandler = async (e) => {
+  const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
     if (!email || !password) return;
 
-    Auth.signup(email, password).then((response) => {
-      if (response && response.status === 201) {
-        navigate('/signin');
-      }
-    });
+    Auth.signup(email, password)
+      .then((response) => {
+        if (response && response.status === 201) {
+          navigate('/signin');
+        }
+      })
+      .catch(() => {
+        setError('중복된 이메일 입니다.');
+      });
   };
 
   return (
@@ -34,6 +39,7 @@ const SignUpPage = () => {
           data-testid="email-input"
           errorMessage={emailError}
           isValidated={isEmailValidated}
+          placeholder="이메일"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.currentTarget.value)}
@@ -42,6 +48,7 @@ const SignUpPage = () => {
           data-testid="password-input"
           errorMessage={passwordError}
           isValidated={isPasswordValidated}
+          placeholder="비밀번호"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.currentTarget.value)}
@@ -53,6 +60,7 @@ const SignUpPage = () => {
           회원가입
         </AuthButton>
       </form>
+      {error}
     </main>
   );
 };
